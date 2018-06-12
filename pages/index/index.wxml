@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}" circular="{{true}}">
+  <block wx:for="{{sliderList}}" wx:key="{{item.id}}">
+    <swiper-item>
+      <image src="{{item.image}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 分类信息 -->
+<view class="category">
+<!--声明式导航  -->
+     <!-- <navigator  url="/pages/list/list?categoriesId={{item.id}}&categoriesName={{item.name}}" class='items' wx:for="{{catagories}}" wx:key="{item.id}">
+        <image src="{{item.icon}}" />
+        <text>{{item.name}}</text>
+    </navigator>  -->
+    <!--编程式导航  -->
+     <view class='items' data-catagoryid="{{item.id}}"data-catagoryname="{{item.name}}" wx:for="{{catagories}}" wx:key="{{item.id}}" catchtap='toggle'>
+        <image src="{{item.icon}}" />
+        <text>{{item.name}}</text>
+    </view> 
+</view>
+<!--交友详情  -->
+<view class="friend">
+  <image  src="/assets/link-01.png" mode="scaleToFill"/>
+  <image  src="/assets/link-02.png" mode="scaleToFill"/>
+</view>

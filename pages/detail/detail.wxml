@@ -1,0 +1,37 @@
+<!--pages/detail/detail.wxml-->
+<view>
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" circular="true" class='slide'>
+    <block wx:for="{{detail.images}}" wx:key="{{item.index}}">
+      <swiper-item class="slides">
+        <image src="{{item}}" class="slide-image" mode="aspectFillt" bindtap='prewImg' data-img="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--具体信息  -->
+  <view class="meta">
+    <text class="name">{{detail.name}}</text>
+    <text class="phone">电话：{{detail.phone}}</text>
+    <text class="address">地址：{{detail.address}}</text>
+    <text class="time">营业时间：{{detail.businessHours}}</text>
+    <text class='score'>{{detail.score}}</text>
+  </view>
+  <!--评论加载  -->
+  <view class='comment'>
+    <block wx:for="{{detail.comments}}" wx:key="{{index}}">
+      <view class='productdetail'>
+        <text class='name'>{{item.name}}</text>
+        <text class='date'>{{item.date}}</text>
+        <text class='content'>{{item.content}}</text>
+        <text class='rating'>{{item.rating}}</text>
+        <view class='img'>
+          <image src="{{m1.replaceStr(item)}}" class="sliders-image" wx:key="*this" wx:for="{{item.images}}"/>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<wxs module="m1">
+  module.exports.replaceStr = function(str){
+      return str.replace('w.h','100.100')
+    };
+</wxs>
